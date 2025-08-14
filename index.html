@@ -1,27 +1,267 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-en="Ikenno — Professional One-Pager" data-de="Ikenno — Professionelle One-Pager-Website" data-i18n-target="text">Ikenno — Professionelle One-Pager-Website</title>
-  <meta name="description" content="A concise, professional one-page site for showcasing Ikenna Leon Okafor." data-en="A concise, professional one-page site for showcasing Ikenna Leon Okafor." data-de="Eine klare, professionelle One-Pager-Website zur Präsentation von Ikenna Leon Okafor." data-i18n-target="content">
+  <title data-en="Ikenno — Professional One‑Pager" data-de="Ikenno — Professionelle One‑Pager‑Website" data-i18n-target="text">Ikenno — Professionelle One‑Pager‑Website</title>
+  <meta name="description" content="Eine klare, professionelle One‑Pager‑Website zur Präsentation von Ikenna Leon Okafor." data-en="A concise, professional one-page site for showcasing Ikenna Leon Okafor." data-de="Eine klare, professionelle One‑Pager‑Website zur Präsentation von Ikenna Leon Okafor." data-i18n-target="content">
+  <meta property="og:title" content="Ikenno — Professional One‑Pager">
+  <meta property="og:description" content="A concise, professional one-page site for showcasing Ikenna Leon Okafor.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#5b8def">
+  <style>
+    /* ====== Colorful theme (kept accessible) ====== */
+    :root{
+      --bg:#0b1020;
+      --text:#0e1a2b;
+      --muted:#4b5563;
+      --card:#ffffff;
+      --border:#e5e7eb;
+      --accent:#5b8def;     /* blue */
+      --accent-2:#9b5de5;   /* purple */
+      --accent-3:#00c2a8;   /* teal */
+      --accent-4:#ffb703;   /* amber */
+      --grad: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 45%, var(--accent-3) 100%);
+      --grad-soft: radial-gradient(1200px 600px at 10% -10%, rgba(91,141,239,.35), transparent 60%),
+                   radial-gradient(1000px 500px at 90% 0%, rgba(155,93,229,.28), transparent 60%),
+                   radial-gradient(800px 400px at 50% 120%, rgba(0,194,168,.25), transparent 60%);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --text:#e6edf5;
+        --muted:#a1aab8;
+        --card:#0f172a;
+        --border:#1f2a44;
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial;
+      color:var(--text);
+      background:#f8fafc;
+      line-height:1.6;
+    }
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    .site-header{
+      position:sticky;top:0;z-index:20;
+      background:#fff;
+      background-image:var(--grad-soft);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:saturate(1.2) blur(8px);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+    .brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font-weight:800;letter-spacing:.2px}
+    .brand-badge{
+      width:28px;height:28px;border-radius:8px;background:var(--grad);
+      box-shadow:0 8px 24px rgba(91,141,239,.35);
+    }
+    .navlist{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+    .navlist a{color:inherit;text-decoration:none;font-weight:600;opacity:.9}
+    .navlist a:hover{opacity:1}
+
+    /* Language segmented slider */
+    .lang-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;align-items:center;border:1px solid var(--accent);border-radius:14px;padding:2px;background:#fff;gap:2px}
+    .lang-toggle .lang-btn{position:relative;z-index:2;appearance:none;border:0;background:transparent;padding:8px 16px;border-radius:12px;cursor:pointer;font-weight:700;line-height:1}
+    .lang-toggle .lang-btn[aria-pressed="true"]{color:#fff}
+    .lang-toggle .thumb{position:absolute;z-index:1;top:2px;left:2px;width:calc(50% - 2px);height:calc(100% - 4px);border-radius:12px;background:var(--grad);transition:transform .25s ease}
+    .lang-toggle[data-active="de"] .thumb{transform:translateX(100%)}
+
+    /* Hero */
+    .hero{
+      position:relative;
+      background: radial-gradient(1200px 700px at -10% 0%, rgba(91,141,239,.35), transparent 60%),
+                  radial-gradient(1000px 500px at 110% 10%, rgba(155,93,229,.30), transparent 60%),
+                  radial-gradient(900px 500px at 30% 120%, rgba(0,194,168,.25), transparent 60%),
+                  linear-gradient(180deg, #ffffff 0%, #f1f5ff 100%);
+      padding:80px 0 70px;
+      overflow:hidden;
+      border-bottom:1px solid var(--border);
+    }
+    .hero .headline{font-size:clamp(32px,5vw,48px);line-height:1.1;margin:0 0 12px}
+    .hero p{max-width:760px;margin:0 auto}
+    .actions{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid #cbd5e1;text-decoration:none;color:#0f172a;background:#fff;font-weight:700}
+    .btn.primary{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 10px 24px rgba(91,141,239,.3)}
+    .btn.primary:hover{transform:translateY(-1px)}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(0,194,168,.12);color:#056e62;font-weight:700;border:1px solid rgba(0,194,168,.25)}
+
+    /* Sections */
+    .section{padding:64px 0}
+    .section-alt{padding:64px 0;background:linear-gradient(180deg,#ffffff 0%, #f7fbff 70%, #ffffff 100%)}
+    h2{font-size:clamp(24px,3.4vw,34px);margin:0 0 12px}
+    .grid.two{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    .grid.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:960px){.grid.two,.grid.three{grid-template-columns:1fr}}
+
+    .card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;
+          box-shadow:0 10px 30px rgba(16,24,40,.06)}
+    .card.accent{border-color:transparent;background:
+          linear-gradient(#fff,#fff) padding-box, var(--grad) border-box;
+          border:2px solid transparent}
+
+    ul.featured{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    ul.featured li{display:flex;gap:10px;align-items:flex-start}
+    .tick{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--accent)}
+
+    /* Contact */
+    .contact .cta{font-size:18px;margin-bottom:10px}
+    .email-link{display:inline-block;margin-top:8px;padding:10px 14px;border-radius:10px;background:rgba(91,141,239,.10);border:1px solid rgba(91,141,239,.25);text-decoration:none;color:inherit;font-weight:700}
+    .email-link:hover{background:rgba(91,141,239,.16)}
+    .contact-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+
+    /* Footer */
+    .site-footer{padding:18px 0;border-top:1px solid var(--border);background:#fff}
+    .footer-grid{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .backtotop{text-decoration:none}
+    
+    /* Avatar */
+    .avatar{width:200px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+  </style>
 </head>
 <body>
-  <section id="about">
-    <h2 data-en="About me" data-de="Über mich">Über mich</h2>
-    <img src="https://github.com/PatronLechon/Ikenno_EU/blob/df83deaebcb576d86a4b09a1d0463c510c9c3752/IMG_3093.JPG" alt="Ikenna Leon Okafor" style="width:200px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-    <p data-en="I’m Ikenna Leon Okafor, an IT consultant with a background in global professional services firms. I have experience in SAP-related projects, digital process improvements, and stakeholder coordination. My focus is on delivering clear communication, structured workflows, and solutions that fit each client’s needs." data-de="Ich bin Ikenna Leon Okafor, IT-Berater mit Erfahrung in internationalen Beratungsunternehmen. Ich habe Kenntnisse in SAP-bezogenen Projekten, digitaler Prozessoptimierung und Stakeholder-Koordination. Mein Fokus liegt auf klarer Kommunikation, strukturierten Abläufen und Lösungen, die zu den Bedürfnissen der Kunden passen.">
-    </p>
-  </section>
+  <header class="site-header" id="top">
+    <div class="container nav" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>Ikenno</span>
+      </a>
+      <ul id="navlist" class="navlist">
+        <li><a href="#about" data-en="About me" data-de="Über mich">Über mich</a></li>
+        <li><a href="#services" data-en="Services" data-de="Leistungen">Leistungen</a></li>
+        <li><a href="#contact" data-en="Contact" data-de="Kontakt">Kontakt</a></li>
+      </ul>
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Language toggle" data-active="de">
+        <span class="thumb" aria-hidden="true"></span>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="Switch to English">EN</button>
+        <button type="button" class="lang-btn" data-lang="de" aria-pressed="true" aria-label="Wechseln zu Deutsch">DE</button>
+      </div>
+    </div>
+  </header>
 
-  <section id="contact">
-    <h2 data-en="Contact" data-de="Kontakt">Kontakt</h2>
-    <p data-en="Let’s talk about how I can support your next IT initiative." data-de="Kontaktieren Sie mich, um Ihr nächstes IT-Projekt gemeinsam erfolgreich zu gestalten."></p>
-    <ul>
-      <li>Email: <a href="mailto:leon@ikenno.com">leon@ikenno.com</a></li>
-      <li>Phone: <a href="tel:+436645156825">+43 664 5156825</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/ikenna-leon-okafor-ikenno/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ikenna-leon-okafor-ikenno</a></li>
-    </ul>
-  </section>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="chip" data-en="IT Consulting &amp; Project Management" data-de="IT-Beratung &amp; Projektmanagement">IT-Beratung &amp; Projektmanagement</div>
+        <h1 class="headline" data-en="Helping you deliver successful IT projects." data-de="Ich unterstütze Sie bei erfolgreichen IT‑Projekten.">Ich unterstütze Sie bei erfolgreichen IT‑Projekten.</h1>
+        <p data-en="I offer IT consulting and project management support to keep your initiatives on track, efficient, and aligned with your goals." data-de="Ich biete IT‑Beratung und Projektmanagement, um Ihre Vorhaben effizient, termingerecht und zielgerichtet umzusetzen.">Ich biete IT‑Beratung und Projektmanagement, um Ihre Vorhaben effizient, termingerecht und zielgerichtet umzusetzen.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact" data-en="Get in touch" data-de="Kontaktieren Sie mich">Kontaktieren Sie mich</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container grid two">
+        <div class="card accent">
+          <h2 data-en="About me" data-de="Über mich">Über mich</h2>
+          <img class="avatar" src="https://github.com/PatronLechon/Ikenno_EU/blob/df83deaebcb576d86a4b09a1d0463c510c9c3752/IMG_3093.JPG" alt="Ikenna Leon Okafor" loading="lazy">
+          <p data-en="I’m Ikenna Leon Okafor, an IT consultant with a background in global professional services firms. I have experience in SAP-related projects, digital process improvements, and stakeholder coordination. My focus is on delivering clear communication, structured workflows, and solutions that fit each client’s needs." data-de="Ich bin Ikenna Leon Okafor, IT‑Berater mit Erfahrung in internationalen Beratungsunternehmen. Ich habe Kenntnisse in SAP‑bezogenen Projekten, digitaler Prozessoptimierung und Stakeholder‑Koordination. Mein Fokus liegt auf klarer Kommunikation, strukturierten Abläufen und Lösungen, die zu den Bedürfnissen meiner Kundinnen und Kunden passen.">Ich bin Ikenna Leon Okafor, IT‑Berater mit Erfahrung in internationalen Beratungsunternehmen. Ich habe Kenntnisse in SAP‑bezogenen Projekten, digitaler Prozessoptimierung und Stakeholder‑Koordination. Mein Fokus liegt auf klarer Kommunikation, strukturierten Abläufen und Lösungen, die zu den Bedürfnissen meiner Kundinnen und Kunden passen.</p>
+          <ul class="featured">
+            <li><span class="tick"></span><span data-en="Pragmatic and structured approach" data-de="Pragmatisches und strukturiertes Vorgehen">Pragmatisches und strukturiertes Vorgehen</span></li>
+            <li><span class="tick"></span><span data-en="Strong communication and collaboration" data-de="Starke Kommunikation und Zusammenarbeit">Starke Kommunikation und Zusammenarbeit</span></li>
+            <li><span class="tick"></span><span data-en="Adaptable to client needs and timelines" data-de="Anpassungsfähig an Anforderungen und Zeitpläne">Anpassungsfähig an Anforderungen und Zeitpläne</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 data-en="Focus areas" data-de="Schwerpunkte">Schwerpunkte</h2>
+          <ul class="featured">
+            <li><span class="tick" style="background:var(--accent)"></span><span data-en="IT project management &amp; coordination" data-de="IT‑Projektmanagement &amp; Koordination">IT‑Projektmanagement &amp; Koordination</span></li>
+            <li><span class="tick" style="background:var(--accent-2)"></span><span data-en="SAP solutions support (implementation assistance, optimization)" data-de="Unterstützung bei SAP‑Lösungen (Implementierung, Optimierung)">Unterstützung bei SAP‑Lösungen (Implementierung, Optimierung)</span></li>
+            <li><span class="tick" style="background:var(--accent-3)"></span><span data-en="Process &amp; workflow improvement" data-de="Prozess‑ &amp; Workflow‑Optimierung">Prozess‑ &amp; Workflow‑Optimierung</span></li>
+            <li><span class="tick" style="background:var(--accent-4)"></span><span data-en="Bridge between technical teams and stakeholders" data-de="Schnittstelle zwischen Technik und Fachbereichen">Schnittstelle zwischen Technik und Fachbereichen</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section-alt">
+      <div class="container">
+        <h2 data-en="Services" data-de="Leistungen">Leistungen</h2>
+        <div class="grid three">
+          <div class="card">
+            <h3 data-en="IT Project Management" data-de="IT‑Projektmanagement">IT‑Projektmanagement</h3>
+            <p data-en="I coordinate tasks, timelines, and teams to keep your IT initiatives on track." data-de="Ich koordiniere Aufgaben, Zeitpläne und Teams, damit Ihre IT‑Initiativen planmäßig vorankommen.">Ich koordiniere Aufgaben, Zeitpläne und Teams, damit Ihre IT‑Initiativen planmäßig vorankommen.</p>
+          </div>
+          <div class="card">
+            <h3 data-en="SAP Solutions Support" data-de="Unterstützung bei SAP‑Lösungen">Unterstützung bei SAP‑Lösungen</h3>
+            <p data-en="Implementation assistance, process optimization, and coordination with experts." data-de="Begleitung bei Implementierung, Prozessoptimierung und Abstimmung mit Expertinnen und Experten.">Begleitung bei Implementierung, Prozessoptimierung und Abstimmung mit Expertinnen und Experten.</p>
+          </div>
+          <div class="card">
+            <h3 data-en="Process &amp; Workflow Improvement" data-de="Prozess‑ &amp; Workflow‑Optimierung">Prozess‑ &amp; Workflow‑Optimierung</h3>
+            <p data-en="I map processes, reduce friction, and help teams work smoothly with their tools." data-de="Ich analysiere Prozesse, reduziere Reibungen und unterstütze Teams beim effektiven Einsatz ihrer Tools.">Ich analysiere Prozesse, reduziere Reibungen und unterstütze Teams beim effektiven Einsatz ihrer Tools.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container card accent contact">
+        <h2 data-en="Contact" data-de="Kontakt">Kontakt</h2>
+        <p class="cta" data-en="Let’s talk about how I can support your next IT initiative." data-de="Kontaktieren Sie mich, um Ihr nächstes IT‑Projekt gemeinsam erfolgreich zu gestalten.">Kontaktieren Sie mich, um Ihr nächstes IT‑Projekt gemeinsam erfolgreich zu gestalten.</p>
+        <a class="email-link" href="mailto:leon@ikenno.com" data-en="leon@ikenno.com" data-de="leon@ikenno.com">leon@ikenno.com</a>
+        <ul class="contact-list">
+          <li><span data-en="Phone:" data-de="Telefon:">Telefon:</span> <a href="tel:+436645156825">+43 664 5156825</a></li>
+          <li><span>LinkedIn:</span> <a href="https://www.linkedin.com/in/ikenna-leon-okafor-ikenno/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ikenna-leon-okafor-ikenno</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <small>
+        <span data-en="© " data-de="© ">© </span>
+        <span id="year">2025</span>
+        <span> </span>
+        <span data-en="Ikenna Leon Okafor. All rights reserved." data-de="Ikenna Leon Okafor. Alle Rechte vorbehalten.">Ikenna Leon Okafor. Alle Rechte vorbehalten.</span>
+      </small>
+      <a href="#top" class="backtotop" data-en="Back to top ↑" data-de="Nach oben ↑">Nach oben ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    function assert(cond, msg){ if(!cond){ console.error('Test failed:', msg); } else { console.log('Test passed:', msg); } }
+    window.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.getElementById('langToggle');
+      const btns = toggle.querySelectorAll('.lang-btn');
+      const saved = localStorage.getItem('site-lang');
+      const defaultLang = (saved === 'de' || saved === 'en') ? saved : 'de';
+
+      function applyLang(lang){
+        document.documentElement.setAttribute('lang', lang);
+        document.querySelectorAll('[data-i18n-target]').forEach(el => {
+          const target = el.getAttribute('data-i18n-target');
+          const value = el.getAttribute('data-' + lang) || '';
+          if(target === 'text'){ el.textContent = value; } else { el.setAttribute(target, value); }
+        });
+        document.body.querySelectorAll('[data-en]:not([data-i18n-target])').forEach(el => {
+          el.textContent = el.getAttribute('data-' + lang) || '';
+        });
+        btns.forEach(b=> b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'));
+        toggle.setAttribute('data-active', lang);
+        localStorage.setItem('site-lang', lang);
+      }
+
+      btns.forEach(b=> b.addEventListener('click', ()=> applyLang(b.dataset.lang)));
+      applyLang(defaultLang);
+
+      const yearEl = document.getElementById('year');
+      assert(yearEl !== null, '#year exists');
+      if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+      assert(document.getElementById('year').textContent.length === 4, '#year populated with 4 digits');
+
+      const current = defaultLang, other = current === 'de' ? 'en' : 'de';
+      applyLang(other); applyLang(current);
+      assert(document.getElementById('year') !== null, '#year still present after language toggle');
+    });
+  </script>
 </body>
 </html>
