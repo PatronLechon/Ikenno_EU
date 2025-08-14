@@ -120,6 +120,18 @@
     
     /* Avatar */
     .avatar{width:200px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+    /* Dark mode override to keep light theme */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+    .card, .section, .section-alt, .site-header, .site-footer {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+  }
+
   </style>
 </head>
 <body>
